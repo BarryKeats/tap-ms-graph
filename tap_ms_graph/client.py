@@ -38,11 +38,13 @@ class MSGraphStream(RESTStream):
     def schema(self):
         link = "{host}/{version}/$metadata#{endpoint}"
 
+
         odata_context = link.format(
             host=API_URL, version=self.api_version, endpoint=self.odata_context
         )
-
+        self.logger.info(f"odata_context: {odata_context}")
         schema = get_schema(odata_context)
+        self.logger.info(f"schema: {schema}")
 
         if self.odata_type:
             type_schema = get_type_schema(odata_context, self.odata_type)

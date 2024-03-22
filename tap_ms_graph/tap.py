@@ -10,13 +10,16 @@ from tap_ms_graph.streams import (
     GroupsStream,
     SubscribedSkusStream,
     UsersStream,
+    ListsStream,
+
 )
 
 STREAM_TYPES = [
-    GroupsStream,
-    GroupMembersStream,
-    SubscribedSkusStream,
-    UsersStream,
+    # GroupsStream,
+    # GroupMembersStream,
+    # SubscribedSkusStream,
+    # UsersStream,
+    ListsStream
 ]
 
 

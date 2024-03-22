@@ -1,13 +1,13 @@
 version: 1
 send_anonymous_usage_stats: true
-project_id: "tap-ms-graph"
+project_id: tap-ms-graph
 default_environment: test
 environments:
 - name: test
 plugins:
   extractors:
-  - name: "tap-ms-graph"
-    namespace: "tap_ms_graph"
+  - name: tap-ms-graph
+    namespace: tap_ms_graph
     pip_url: -e .
     capabilities:
     - state
@@ -15,15 +15,27 @@ plugins:
     - discover
     - about
     - stream-maps
-    config:
-      start_date: '2010-01-01T00:00:00Z'
     settings:
-    # TODO: To configure using Meltano, declare settings and their types here:
     - name: username
     - name: password
       kind: password
+      sensitive: true
     - name: start_date
       value: '2010-01-01T00:00:00Z'
+    config:
+      start_date: '2010-01-01T00:00:00Z'
+      auth_url: 
+        https://login.microsoftonline.com/801c223b-2473-4dc8-b621-dd6b4a2244b8/oauth2/v2.0/token
+      flattening_enabled: false
+      api_version: v1.0
+      api_url: https://graph.microsoft.com
+      tenant: 801c223b-2473-4dc8-b621-dd6b4a2244b8
+      client_id: "4d8fbc10-3454-44a0-9d1e-2834e688b2fa"
+      client_secret: "Tum8Q~BUGVoKN.TzDFJwwub0tqNL4g5w5UmkRcfu"
+  - name: tap-ms-graph
+    namespace: tap-ms-graph
+    pip_url: tap-ms-graph
+    executable: tap-ms-graph
   loaders:
   - name: target-jsonl
     variant: andyh1203
