@@ -41,6 +41,6 @@ class UsersStream(MSGraphStream):
 
 class ListsStream(MSGraphStream):
     name = "centre"
-    path = "/sites/evolveeducationgroup.sharepoint.com,6b62a68b-7f1f-4e94-8e39-62c0781707d9,eeed0bc0-acbd-44db-a8c2-dcf56fdef467/lists/centre/items?expand=fields"
+    path = "/sites/{self.client_url}/lists/centre/items?expand=fields"
     primary_keys = ["id"]
     odata_context = "sites"
